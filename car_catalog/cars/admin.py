@@ -1,8 +1,13 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Car
+from .models import Car, CarAccessory
+
+class CarAccessoryInline(admin.TabularInline):
+    model = CarAccessory
+    extra = 1
 
 class CarAdmin(admin.ModelAdmin):
+    inlines = [CarAccessoryInline]
     list_display = ('year', 'make', 'model', 'display_image', 'display_link')
 
     def display_image(self, obj):
