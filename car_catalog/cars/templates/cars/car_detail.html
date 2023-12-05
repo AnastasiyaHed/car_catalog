@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Detail</title>
+</head>
+<body>
+    <h1>{{ car.year }} {{ car.make }} {{ car.model }}</h1>
+    {% if car.image %}
+        <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}">
+    {% endif %}
+    <p>Description: {{ car.description }}</p>
+
+    <h2>Accessories:</h2>
+    <ul>
+        {% for accessory in accessories %}
+            <li>{{ accessory.name }} - {{ accessory.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'car_list' %}">Back to Car List</a>
+</body>
+</html>

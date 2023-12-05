@@ -1,0 +1,41 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Car List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Car List</h1>-->
+<!--    <ul>-->
+<!--        {% for car in cars %}-->
+<!--            <li>-->
+<!--                {{ car.year }} {{ car.make }} {{ car.model }}-->
+<!--                {% if car.image %}-->
+<!--                    <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}">-->
+<!--                {% endif %}-->
+<!--                <br>-->
+<!--                <a href="{% url 'car_detail' car.id %}">Details</a>-->
+<!--            </li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--    <a href="{% url 'add_car' %}">Add a Car</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car List</title>
+</head>
+<body>
+    <h1>Car List</h1>
+    <!-- Добавьте ссылку для покупки авто на главную страницу -->
+    <p><a href="{% url 'add_car' %}">add a Car</a></p>
+    {% for car in cars %}
+        <h2>{{ car.year }} {{ car.make }} {{ car.model }}</h2>
+        <p>Image: <img src="{{ car.image.url }}" width="100" height="100" /></p>
+        <p>Link: <a href="{{ car.link }}" target="_blank">{{ car.link }}</a></p>
+        <p><a href="{% url 'purchase_car' car.id %}">Purchase this Car</a></p>
+        <hr>
+    {% endfor %}
+</body>
+</html>

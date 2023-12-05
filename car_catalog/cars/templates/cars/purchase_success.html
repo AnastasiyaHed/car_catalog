@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Success</title>
+</head>
+<body>
+    <h1>Purchase Successful</h1>
+    <p>You have successfully purchased the {{ car.year }} {{ car.make }} {{ car.model }} with the following accessories:</p>
+    <ul>
+        {% for accessory in purchase.accessories.all %}
+            <li>{{ accessory.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'car_list' %}">Back to Car List</a>
+</body>
+</html>
